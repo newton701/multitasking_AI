@@ -1,0 +1,32 @@
+#! fastapi-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: fastapi
+    namespace: backend-assessment
+    labels:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: fastapi
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: backend-assessment
+            com.docker.compose.service: fastapi
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: backend-assessment
+                com.docker.compose.service: fastapi
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: fastapi
+                  image: backend-assessment-fastapi
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - name: fastapi-8000
+                      containerPort: 8000

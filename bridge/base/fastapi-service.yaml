@@ -1,0 +1,21 @@
+#! fastapi-service.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: fastapi-published
+    namespace: backend-assessment
+    labels:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: fastapi
+spec:
+    selector:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: fastapi
+    ports:
+        - name: fastapi-8000
+          port: 8000
+          protocol: TCP
+          targetPort: fastapi-8000
+
+# check if there is at least one published port

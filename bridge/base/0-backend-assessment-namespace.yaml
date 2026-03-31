@@ -1,0 +1,8 @@
+#! 0-backend-assessment-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: backend-assessment
+    labels:
+        com.docker.compose.project: backend-assessment

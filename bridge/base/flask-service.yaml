@@ -1,0 +1,19 @@
+#! flask-service.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: flask-published
+    namespace: backend-assessment
+    labels:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: flask
+spec:
+    selector:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: flask
+    ports:
+        - name: flask-5000
+          port: 5000
+          protocol: TCP
+          targetPort: flask-5000

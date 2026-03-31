@@ -1,0 +1,32 @@
+#! flask-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: flask
+    namespace: backend-assessment
+    labels:
+        com.docker.compose.project: backend-assessment
+        com.docker.compose.service: flask
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: backend-assessment
+            com.docker.compose.service: flask
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: backend-assessment
+                com.docker.compose.service: flask
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: flask
+                  image: backend-assessment-flask
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - name: flask-5000
+                      containerPort: 5000

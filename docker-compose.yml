@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  flask:
+    build: ./flask_service
+    ports:
+      - "5000:5000"
+
+  fastapi:
+    build: ./fastapi_service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - flask
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
